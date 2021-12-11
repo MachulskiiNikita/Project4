@@ -4,7 +4,7 @@
 class NaturalLanguage
 {
 public:
-	NaturalLanguage(int number, std::vector <std::string> territory) : m_number(number), m_territory(territory){}
+	NaturalLanguage(int number, const std::vector <std::string>&  territory) : m_number(number), m_territory(territory){}
 	virtual int getSpeakersNumber() = 0; 
 	virtual std::vector<std::string> getTerritory() = 0;
 protected:
@@ -16,7 +16,7 @@ class IndoeuropeanFamilyLanguage : public NaturalLanguage
 {
 
 public:
-	IndoeuropeanFamilyLanguage(int number, std::vector <std::string> territory) : NaturalLanguage(number, territory) {};
+	IndoeuropeanFamilyLanguage(int number, const std::vector <std::string>& territory) : NaturalLanguage(number, territory) {};
 	int getSpeakersNumber()
 	{
 		return m_number;

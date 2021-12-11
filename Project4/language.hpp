@@ -17,12 +17,12 @@ class IndoeuropeanFamilyLanguage : public NaturalLanguage
 
 public:
 	IndoeuropeanFamilyLanguage(int number, const std::vector <std::string>& territory) : NaturalLanguage(number, territory) {};
-	int getSpeakersNumber()
+	int getSpeakersNumber() override
 	{
 		return m_number;
 	}
 
-	std::vector<std::string> getTerritory()
+	std::vector<std::string> getTerritory() override
 	{
 		return m_territory;
 	}

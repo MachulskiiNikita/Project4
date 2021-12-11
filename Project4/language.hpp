@@ -11,7 +11,7 @@ protected:
 	int m_number;
 	std::vector<std::string> m_territory;
 };
-
+   
 class IndoeuropeanFamilyLanguage : public NaturalLanguage
 {
 

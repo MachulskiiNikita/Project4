@@ -1,7 +1,7 @@
 #include <cstddef>
 #include <iostream>
-template < typename T>
-void quicksorting ( T * array, bool F(T, T), int begin, int end)
+template < typename T, typename C>
+void quicksorting ( T * array, C F, int begin, int end)
 {
     int i = begin;
     int j = end;
@@ -16,9 +16,7 @@ void quicksorting ( T * array, bool F(T, T), int begin, int end)
             j--;
         if (i <= j)
         {
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+            std::swap(array[i] , array[j]);
             i++;
             j--;
         }
@@ -29,25 +27,24 @@ void quicksorting ( T * array, bool F(T, T), int begin, int end)
         quicksorting(array, F, i, end);
 }
 
-template < typename T>
-void quicksort(T* array, bool F(T, T), std::size_t size)
+template < typename T, typename C>
+void quicksort(T* array, C F, std::size_t size)
 {
     quicksorting(array, F, 0, size - 1);
 }
 
-template < typename T, std::size_t N>
-void quicksort(T ( &array) [N], bool F(T, T))
+template < typename T, std::size_t N, typename C>
+void quicksort(T ( &array) [N], C F)
 {
     quicksorting(array, F, 0, N - 1);
 }
 
-bool f(int x, int y)
-{return x <= y; }
+
 
 int main()
 {
     int array[6] = { 1 , 6, 4, 3, 7 ,2 };
-    quicksort(array, f);
+    quicksort(array, [](int x, int y) {return x <= y; });
     for (auto i : array)
     {
         std::cout << i << ' ';
